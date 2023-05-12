@@ -8,15 +8,20 @@
             <div class=""></div>
         </div>
         <GrnLink active="RackIn" :shipmentId="this.$route.params.shipmentId"></GrnLink>
-        <div v-for="(rackin, index) in rackins" :key="index">
-            <div class="d-flex justify-content-between container" @click="showmodal(rackin)">
+        <div v-for="(grn, index) in grns" :key="index">
+            <div class="d-flex justify-content-between container" @click="showmodal(grn)">
                 <div class="d-flex my-2">
                     <div class="border border-2 border-dark rounded-circle">
-                        <img :src="`${publicPath}${rackin.img}`" style="width: 60px; height: 60px; border-radius: 50px;">
+                        <img :src="`${publicPath}${grn.img}`" style="width: 60px; height: 60px; border-radius: 50px;">
                     </div>
                     <div class=" align-items-center text-dark ">
-                        <p class=" m-0 ps-2  fw-bold">{{ rackin.name }}</p>
-                        <p class=" m-0 ps-2 ">{{ rackin.text }}</p>
+                        <p class=" m-0 ps-2  fw-bold">{{ grn.name }}</p>
+                        <div class="d-flex">
+                            <div class="ps-2" v-for="(qty, name) in grn.qty" :key="name" v-show="qty.actual !== ''">
+                                {{ name }}
+                                {{ qty.defined }}
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- <div class="d-flex align-items-center "> -->
@@ -31,7 +36,7 @@
                 <!-- </div> -->
             </div>
         </div>
-        <div v-if="Object.keys(activeRack).length > 0" class="modal show fade d-block" tabindex="-1">
+        <div v-if="active.grn" class="modal show fade d-block" tabindex="-1">
             <div class="modal-dialog  modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -39,8 +44,11 @@
                     </div>
                     <div class="modal-body">
                         <div class="text-center">
-                            <b class="text-center text-decoration-underline">{{ activeRack.name }}</b>
-                            <p class="text-center text-decoration-underline">{{ activeRack.text }}</p>
+                            <b class="text-center text-decoration-underline">{{ active.grn.name }}</b>
+                            <div class="" v-for="(qty, name) in active.grn.qty" :key="name" v-show="qty.defined !== ''">
+                                <i class="bi bi-record-circle-fill me-1"></i>
+                                <span>{{ name }} | {{ qty.defined }}</span>
+                            </div>
                         </div>
                         <div class="text-center">
                             <div class=" w-100">
@@ -86,17 +94,16 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                                <pre>{{ rackInfo }}</pre>
+                                <p v-for="(data, index) in previousData" :key="index">{{ form }}</p>
+                               <div class="d-flex flex-wrap">
+                                <p class="m-0 px-2"><span class="fw-bold">Godown:-</span>{{ form.godown }}</p>
+                                <p class="m-0 px-2"><span class="fw-bold">Rack:-</span>{{ form.rack }}</p>
+                                <p class="m-0 px-2"><span class="fw-bold">Qty:-</span>{{ form.qty }}</p>
+                                <p class="m-0 px-2"><span class="fw-bold">Selected:-</span>{{ form.select }}</p>
+                               </div>
                                 <button @click="submit">Submit</button>
-                                <!-- 
-                                <p v-for="(data, index) in previousData" :key="index" class="fw-bold">{{ data }}</p> -->
                             </div>
                         </div>
-                        <!-- <div class="d-flex justify-content-center mt-3">
-                            <i class="bi bi-camera fs-4"></i>
-                            <button class="btn btn-warning ms-3">Upload Camera</button>
-                        </div> -->
-
                     </div>
                     <div class="modal-footer d-flex justify-content-center w-100">
                         <button class="btn btn-dark w-100" @click="hidemodal">Submit</button>
@@ -113,37 +120,40 @@ import GrnLink from '../Navbar/GrnLink.vue';
 
 export default {
     components: { GrnLink },
-    props:['shipment'],
+    props: ['shipment'],
     data() {
         return {
             publicPath: process.env.BASE_URL,
-            activeRack: {},
+            active: {},
             form: {
                 id: '',
                 godown: '',
                 rack: '',
                 qty: '',
                 select: '',
+                previousData: []
             }
         }
     },
     computed: {
-        rackins() {
-            return this.$store.getters.getRackins;
+        grns() {
+            return this.$store.getters['myshipment/getGrns']({
+                shipmentId: this.$route.params.shipmentId,
+            })
         },
         rackInfo() {
-            return this.$store.getters.getRackInfo(this.activeRack.id)
+            return this.$store.getters.getRackInfo(this.active.grn.id)
         }
     },
     methods: {
-        showmodal(rackin) {
-            this.activeRack = rackin
+        showmodal(grn) {
+            this.active.grn = grn
         },
         hidemodal() {
-            this.activeRack = {}
+            this.active.grn = null
         },
         submit() {
-            this.form.id = this.activeRack.id
+            this.form.id = this.active.grn.id
             this.$store.dispatch('saveRacking', {
                 data: this.form
             }).then(() => {

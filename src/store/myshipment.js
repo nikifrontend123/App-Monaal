@@ -127,8 +127,18 @@ export default {
             if (!grnIndex) return null;
             state.shipments[shipmentIndex].grns[grnIndex].addresses.push(data.data);
           },
+
+        //   saveRacking(state, data) {
+        //     let myElem = array.find(item => item.id === id);
+        //     if (myElem) {
+        //       myElem.exampleBoolean = true
+        //     }
+        //   }
     },
     actions: {
+        saveRacking({commit}, data){
+            commit('saveRacking', data)
+        }
 
     }
 };
