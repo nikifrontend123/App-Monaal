@@ -7,7 +7,11 @@
         </div>
         <hr style="margin: 3px 0; opacity: 1;">
         <NavLink active="Sales"></NavLink>
-        <RouterLink to=""><h1>Iam Sales Page</h1></RouterLink>
+        <RouterLink to="/SalePurchasePage">
+            <div class="d-flex justify-content-center my-4">
+                <button class="btn btn-primary ">Login Sales</button>
+            </div>
+        </RouterLink>
  
     </div>
 </template>

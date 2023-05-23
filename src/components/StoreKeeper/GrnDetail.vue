@@ -1,10 +1,10 @@
 <template>
     <div>
-        <div class="d-flex justify-content-between px-2">
+        <div class="d-flex justify-content-between border-bottom px-2">
             <RouterLink to="/SkGrn">
                 <i class="bi bi-arrow-left-short fs-4"></i>
             </RouterLink>
-            <h4 class="text-center border-bottom py-2">Inward</h4>
+            <h4 class="text-center py-2">Inward</h4>
             <div class=""></div>
         </div>
         <GrnLink active="GrnDetail" :shipmentId="this.$route.params.shipmentId"></GrnLink>

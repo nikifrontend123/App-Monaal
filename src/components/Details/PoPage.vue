@@ -24,11 +24,17 @@
                         <img :src="`${publicPath}${po.img}`" class="border border2 border-dark"
                             style="width: 60px; height: 60px; border-radius: 50%;">
                     </div>
-                    <div class="ms-3 text-dark">
-                        <p class="m-0 fw-bold">{{ po.name }}</p>
-                        <div class="d-flex text-dark">
-                            <p class="m-0 fw-bold">Qty : <span class="fw-light">{{ po.qty }}</span></p>
-                            <p class="m-0 ms-3 fw-bold">Amt : <span class="fw-light">{{ po.amt }}</span></p>
+                    <div class="ms-2 w-100">
+                        <div class="d-flex justify-content-between ">
+                            <p class="m-0 fw-bold">{{ po.name }}</p>
+                            <p class="m-0 text-success" :class="po.textcolor">{{po.text}}</p>
+
+                        </div>
+                        <div class="d-flex  text-dark">
+                            <div class="d-flex text-dark" style="font-size: 13px;">
+                                <p class="m-0 fw-bold">Qty: <span class="fw-light">{{ po.qty }}</span></p>
+                                <p class="m-0 ms-2 fw-bold">Amt: <span class="fw-light">{{ po.amt }}</span></p>
+                            </div>
                         </div>
                     </div>
                 </div>

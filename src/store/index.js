@@ -151,10 +151,10 @@ export default createStore({
         cid: "16598563",
         img: "img/icons/f1.jpg",
         tag: "SO/1008 {02042023 & 18:30}",
-        price: "Rs. 80/mtr",
-        moq: "5000 Mtr",
+        price: "80",
+        moq: "5000",
         length: "",
-        width: "2.5 Mtr",
+        width: "2.5",
         gsm: "300",
         color: "White, Black, Custom",
         design: "Same as Image",
@@ -166,42 +166,44 @@ export default createStore({
         id: 2,
         imgD: "img/icons/fb2.png",
         name: "Crepe Fabric",
-        price: "499/pc",
-        moq: "10,000 mtr",
+        price: "499",
+        moq: "10,000",
       },
       {
         id: 3,
         imgD: "img/icons/fb1.png",
         name: "chiffon Fabric",
-        price: "499/pc",
-        moq: "10,000 mtr",
+        price: "499",
+        moq: "10,000 ",
       },
       {
         id: 4,
         imgD: "img/icons/fb4.png",
         name: "Georgette Fabric",
-        price: "499/pc",
-        moq: "10,000 mtr",
+        price: "499",
+        moq: "10,000",
       },
       {
         id: 5,
         imgD: "img/icons/fb1.png",
         name: "Cotton Duck",
-        price: "499/pc",
-        moq: "10,000 mtr",
+        price: "499",
+        moq: "10,000",
       },
       {
         id: 6,
         imgD: "img/icons/fb2.png",
         name: "Poplin Fabric",
-        price: "499/pc",
-        moq: "10,000 mtr",
+        price: "499",
+        moq: "10,000",
       },
     ],
     samples: [
       {
         id: 1,
         name: "Cheese Fabric",
+        text: 'Sample Courier Requested',
+        textcolor: 'text-warning',
         ariving: "Today",
         cid: "16598563",
         img: "img/icons/f1.jpg",
@@ -220,6 +222,8 @@ export default createStore({
       {
         id: 2,
         name: "Cheese Fabric",
+        text: 'Sample Dispatched',
+        textcolor: 'text-success',
         ariving: "Today",
         cid: "16598563",
         img: "img/icons/f2.png",
@@ -238,6 +242,8 @@ export default createStore({
       {
         id: 3,
         name: "Cheese Fabric",
+        text: 'Sample Courier Requested',
+        textcolor: 'text-warning',
         ariving: "Today",
         cid: "16598563",
         img: "img/icons/f3.jpg",
@@ -256,6 +262,8 @@ export default createStore({
       {
         id: 4,
         name: "Cheese Fabric",
+        text: 'Sample Dispatched',
+        textcolor: 'text-success',
         ariving: "Today",
         cid: "16598563",
         img: "img/icons/f4.jpg",
@@ -362,6 +370,8 @@ export default createStore({
       {
         id: 1,
         img: "img/icons/f1.jpg",
+        textcolor: "text-success",
+        text: "Accepted",
         name: "Cheese Fabric",
         qty: "10,000 mtr",
         amt: "Rs 15,80,000",
@@ -379,6 +389,8 @@ export default createStore({
       {
         id: 2,
         img: "img/icons/f1.jpg",
+        textcolor: "text-info",
+        text: "Updated",
         name: "Cheese Fabric",
         qty: "10,000 mtr",
         amt: "Rs 15,80,000",
@@ -396,6 +408,8 @@ export default createStore({
       {
         id: 3,
         img: "img/icons/f1.jpg",
+        textcolor: "text-danger",
+        text: "Rejected",
         name: "Cheese Fabric",
         qty: "10,000 mtr",
         amt: "Rs 15,80,000",
@@ -413,6 +427,8 @@ export default createStore({
       {
         id: 4,
         img: "img/icons/f1.jpg",
+        textcolor: "text-success",
+        text: "Accepted",
         name: "Cheese Fabric",
         qty: "10,000 mtr",
         amt: "Rs 15,80,000",
@@ -504,10 +520,36 @@ export default createStore({
 
     ],
     activeSuppo: {},
+    supbills: [
+      {
+        id: 1,
+        date: '17/6',
+        text: 'Shipment Arriving 13 May',
+        text1: 'Pending',
+        txtcolor: 'text-danger',
+        invoice: 12511255,
+        cid: 15982355,
+        img: 'img/icons/fab2.png',
+        name: 'Himanshu Bakshi'
+      },
+      {
+        id: 2,
+        date: '17/8',
+        text: 'Shipment Arriving 13 May',
+        text1: 'Paid',
+        txtcolor: 'text-success',
+        invoice: 12511255,
+        cid: 15982355,
+      },
+    ],
+    activeSupbill: {},
     lrs: [
       {
         id: 1,
         img: "img/icons/f1.jpg",
+        qty: '10000',
+        amt: '1580000',
+        po: '4562562',
         name: "Cheese Fabric",
         tag: "SO/1008 {02042023 & 18:30}",
         ariving: "Today",
@@ -528,6 +570,9 @@ export default createStore({
       {
         id: 2,
         img: "img/icons/f3.jpg",
+        qty: '10000',
+        amt: '1580000',
+        po: '4562562',
         name: "Cheese Fabric",
         ariving: "Today",
         cid: "16598563",
@@ -535,6 +580,9 @@ export default createStore({
       {
         id: 3,
         img: "img/icons/f4.jpg",
+        qty: '10000',
+        amt: '1580000',
+        po: '4562562',
         name: "Cheese Fabric",
         ariving: "Today",
         cid: "16598563",
@@ -542,6 +590,9 @@ export default createStore({
       {
         id: 4,
         img: "img/icons/f5.jpg",
+        qty: '10000',
+        amt: '1580000',
+        po: '4562562',
         name: "Cheese Fabric",
         ariving: "Today",
         cid: "16598563",
@@ -549,6 +600,9 @@ export default createStore({
       {
         id: 5,
         img: "img/icons/f3.jpg",
+        qty: '10000',
+        amt: '1580000',
+        po: '4562562',
         name: "Cheese Fabric",
         ariving: "Today",
         cid: "16598563",
@@ -556,6 +610,9 @@ export default createStore({
       {
         id: 6,
         img: "img/icons/f1.jpg",
+        qty: '10000',
+        amt: '1580000',
+        po: '4562562',
         name: "Cheese Fabric",
         ariving: "Today",
         cid: "16598563",
@@ -568,6 +625,10 @@ export default createStore({
         id: 1,
         img: "img/icons/f1.jpg",
         name: "Cheese Fabric",
+        invoice: '1561023156',
+        shipmentID: '45259865',
+        text:'In-Transit',
+        textcolor: 'text-danger',
         tag: "SO/1008 {02042023 & 18:30}",
         ariving: "Today",
         cid: "16598563",
@@ -590,6 +651,10 @@ export default createStore({
         name: "Cheese Fabric",
         ariving: "Today",
         cid: "16598563",
+        invoice: '1561023156',
+        shipmentID: '45259865',
+        text:'In-Transit',
+        textcolor: 'text-danger'
       },
       {
         id: 3,
@@ -597,6 +662,10 @@ export default createStore({
         name: "Cheese Fabric",
         ariving: "Today",
         cid: "16598563",
+        invoice: '1561023156',
+        shipmentID: '45259865',
+        text:'QC',
+        textcolor: 'text-success'
       },
       {
         id: 4,
@@ -604,6 +673,10 @@ export default createStore({
         name: "Cheese Fabric",
         ariving: "Today",
         cid: "16598563",
+        invoice: '1561023156',
+        shipmentID: '45259865',
+        text:'Delievered',
+        textcolor: 'text-warning'
       },
       {
         id: 5,
@@ -611,6 +684,10 @@ export default createStore({
         name: "Cheese Fabric",
         ariving: "Today",
         cid: "16598563",
+        invoice: '1561023156',
+        shipmentID: '45259865',
+        text:'QC',
+        textcolor: 'text-success'
       },
       {
         id: 6,
@@ -618,6 +695,10 @@ export default createStore({
         name: "Cheese Fabric",
         ariving: "Today",
         cid: "16598563",
+        invoice: '1561023156',
+        shipmentID: '45259865',
+        text:'Billed',
+        textcolor: 'text-info'
       },
 
     ],
@@ -1085,7 +1166,30 @@ export default createStore({
         stock: '800'
       },
     ],
-    racks: []
+    racks: [],
+    detailbills: [
+      {
+        id: 1,
+        date: '17/6',
+        text: 'Shipment Arriving 13 May',
+        text1: 'Pending',
+        txtcolor: 'text-danger',
+        invoice: 12511255,
+        cid: 15982355,
+        img: 'img/icons/fab2.png',
+        name: 'Himanshu Bakshi'
+      },
+      {
+        id: 2,
+        date: '17/8',
+        text: 'Shipment Arriving 13 May',
+        text1: 'Paid',
+        txtcolor: 'text-success',
+        invoice: 12511255,
+        cid: 15982355,
+      },
+    ],
+    activeDetailbill: {},
   },
 
   getters: {
@@ -1139,6 +1243,9 @@ export default createStore({
     },
     getSuppo(state) {
       return state.activeSuppo;
+    },
+    getLrs(state) {
+      return state.lrs;
     },
     getLr(state) {
       return state.activeLr;
@@ -1194,7 +1301,19 @@ export default createStore({
     getRackInfo: (state) => (rackId) => {
       let index = state.racks.findIndex(rack => rack.id == rackId);
       return state.racks[index];
-  },
+    },
+    getSupbills(state) {
+      return state.supbills;
+    },
+    getSupbill(state) {
+      return state.activeSupbill;
+    },
+    getDetailbills(state) {
+      return state.detailbills;
+    },
+    getDetailbill(state) {
+      return state.activeDetailbill;
+    },
   },
   mutations: {
     selectSample(state, sample) {
@@ -1245,6 +1364,18 @@ export default createStore({
     saveRacking(state, data) {
       state.racks.push(data.data);
     },
+    selectSupbill(state, supbill) {
+      state.activeSupbill = supbill;
+    },
+    hideSupbill(state) {
+      state.activeSupbill = {};
+    },
+    selectDetailbill(state, detailbill) {
+      state.activeDetailbill = detailbill;
+    },
+    hideDetailbill(state) {
+      state.activeDetailbill = {};
+    },
   },
   actions: {
     selectSample({ commit }, sample) {
@@ -1294,6 +1425,18 @@ export default createStore({
     },
     saveRacking({ commit }, data) {
       commit('saveRacking', data)
+    },
+    selectSupbill({ commit }, supbill) {
+      commit("selectSupbill", supbill);
+    },
+    hideSupbill({ commit }) {
+      commit("hideSupbill");
+    },
+    selectDetailbill({ commit }, detailbill) {
+      commit("selectDetailbill", detailbill);
+    },
+    hideDetailbill({ commit }) {
+      commit("hideDetailbill");
     },
   },
   modules: {

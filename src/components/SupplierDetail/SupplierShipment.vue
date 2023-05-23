@@ -17,23 +17,25 @@
             <p class=" m-0 fs-4 text-center fw-bold border-bottom">Supplier</p>
             <SupplierLink active="SupplierShipment"></SupplierLink>
             <SearchBar></SearchBar>
-            <div v-for="(supshipment, index) in supshipments" :key="index" class="d-flex container border-top py-2"
+            <div v-for="(supshipment, index) in supshipments" :key="index" class="d-flex border-top py-1"
                 @click="showSupshipment(supshipment)">
-                <!-- <RouterLink to="/LrDetailPage" style="text-decoration: none;"> -->
-                <div class="d-flex container">
-                    <div class="img">
-                        <img :src="`${publicPath}${supshipment.img}`" class="border border2 border-dark"
+                <div class="d-flex justify-content-between container">
+                    <div class="img d-flex">
+                        <p class="border border-dark d-flex justify-content-center align-items-center"
                             style="width: 60px; height: 60px; border-radius: 50%;">
-                    </div>
-                    <div class="ms-3 text-dark">
-                        <p class="m-0 fw-bold">{{ supshipment.name }}</p>
-                        <div class="d-flex text-dark">
-                            <p class="m-0 fw-bold">Ariving : <span class="fw-light">{{ supshipment.ariving }}</span></p>
-                            <p class="m-0 ms-3 fw-bold">CID : <span class="fw-light">{{ supshipment.cid }}</span></p>
+                            14/7
+                        </p>
+                        <div class="ms-1 text-dark">
+                            <p class="m-0 fw-bold">Invoice No. : {{ supshipment.invoice }}</p>
+                            <div class="d-flex text-dark">
+                                <p class="m-0 fw-bold">Shipment ID : {{ supshipment.shipmentID }}</p>
+                            </div>
                         </div>
                     </div>
+                    <div class="m-0 d-flex justify-content-center align-items-center">
+                        <p class="text-center" :class="supshipment.textcolor">{{ supshipment.text }}</p>
+                    </div>
                 </div>
-                <!-- </RouterLink> -->
             </div>
             <div v-if="Object.keys(activeSupshipment).length !== 0">
                 <div class="offcanvas offcanvas-end show" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop"
@@ -43,7 +45,8 @@
                             <p class="fw-bold text-center m-0">{{ activeSupshipment.name }}</p>
                         </div>
                         <div class="d-flex justify-content-end w-100">
-                            <button type="button" class="btn" @click="hideSupshipment()"><i class="bi bi-x fs-3"></i></button>
+                            <button type="button" class="btn" @click="hideSupshipment()"><i
+                                    class="bi bi-x fs-3"></i></button>
                         </div>
                     </div>
                     <div class="offcanvas-body">
@@ -58,40 +61,88 @@
                             <div class="accordion" id="accordionPanelsStayOpenExample">
                                 <div class="accordion-item">
                                     <h2 class="accordion-header">
-                                        <button class="accordion-button  fw-bold bg-primary text-white" type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="false"
-                                            aria-controls="panelsStayOpen-collapseOne">
+                                        <button class="accordion-button  fw-bold bg-primary text-white" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne"
+                                            aria-expanded="false" aria-controls="panelsStayOpen-collapseOne">
                                             Tracking Detail
                                         </button>
                                     </h2>
                                     <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
                                         <div class="accordion-body">
-                                            <StageStepper stage = '2'></StageStepper>
+                                            <StageStepper stage='2'></StageStepper>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="accordion-item mt-3">
                                     <h2 class="accordion-header">
-                                        <button class="accordion-button  fw-bold bg-primary text-white" type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#panelsStayOpen-collapsefive" aria-expanded="false"
-                                            aria-controls="panelsStayOpen-collapseTwo">
-                                            Qc Details
+                                        <button class="accordion-button  fw-bold bg-primary text-white" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapsefive"
+                                            aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                                            Dispatch Details
                                         </button>
                                     </h2>
                                     <div id="panelsStayOpen-collapsefive" class="accordion-collapse collapse show">
                                         <div class="accordion-body">
-                                            <p class="text-decoration-underline fw-bold">{{ activeSupshipment.name }}</p>
-                                            <p class="">{{ activeSupshipment.tagid }}</p>
-                                            <p class="fw-bold mb-0">Courier Id</p>
-                                            <p class="m-0">{{ activeSupshipment.courierid }}</p>
+                                            <button class="btn btn-warning w-100">Create New Shipment</button>
+                                            <p class="text-decoration-underline mt-2 fs-5">Bilty Details</p>
+                                            <div class="form form-control-sm">
+                                                <div
+                                                    class="d-flex border-bottom pb-2 align-items-center justify-content-between">
+                                                    <p class="m-0 fw-bold">Packaging</p>
+                                                    <input class="form-control-sm" type="text">
+                                                </div>
+                                                <div
+                                                    class="d-flex border-bottom pb-2 align-items-center justify-content-between mt-2">
+                                                    <p class="m-0 fw-bold">No. of Packages</p>
+                                                    <input class="form-control-sm" type="text">
+                                                </div>
+                                                <div
+                                                    class="d-flex border-bottom pb-2 align-items-center justify-content-between mt-2">
+                                                    <p class="m-0 fw-bold">Weight in Kgs.</p>
+                                                    <input class="form-control-sm" type="text">
+                                                </div>
+                                                <div
+                                                    class="d-flex border-bottom pb-2 align-items-center justify-content-between mt-2">
+                                                    <p class="m-0 fw-bold">Upload Bilty</p>
+                                                    <input class="form-control-sm" type="file">
+                                                </div>
+                                            </div>
+                                            <p class="text-decoration-underline mt-2 fs-5">Invoice Details</p>
+                                            <div class="form form-control-sm">
+                                                <div
+                                                    class="d-flex border-bottom pb-2 align-items-center justify-content-between">
+                                                    <p class="m-0 fw-bold">Date</p>
+                                                    <input class="form-control-sm" type="text">
+                                                </div>
+                                                <div
+                                                    class="d-flex border-bottom pb-2 align-items-center justify-content-between mt-2">
+                                                    <p class="m-0 fw-bold">Invoice No.</p>
+                                                    <input class="form-control-sm" type="text">
+                                                </div>
+                                                <div
+                                                    class="d-flex border-bottom pb-2 align-items-center justify-content-between mt-2">
+                                                    <p class="m-0 fw-bold">Purchase Amt</p>
+                                                    <input class="form-control-sm" type="text">
+                                                </div>
+                                                <div
+                                                    class="d-flex border-bottom pb-2 align-items-center justify-content-between mt-2">
+                                                    <p class="m-0 fw-bold">Total Amt</p>
+                                                    <input class="form-control-sm" type="text">
+                                                </div>
+                                                <div
+                                                    class="d-flex border-bottom pb-2 align-items-center justify-content-between mt-2">
+                                                    <p class="m-0 fw-bold">Upload Invoice</p>
+                                                    <input class="form-control-sm" type="file">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="accordion-item mt-3">
+                                <!-- <div class="accordion-item mt-3">
                                     <h2 class="accordion-header">
-                                        <button class="accordion-button  fw-bold bg-primary text-white" type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
-                                            aria-controls="panelsStayOpen-collapseTwo">
+                                        <button class="accordion-button  fw-bold bg-primary text-white" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo"
+                                            aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
                                             Dispatch Details
                                         </button>
                                     </h2>
@@ -106,9 +157,9 @@
                                 </div>
                                 <div class="accordion-item mt-3">
                                     <h2 class="accordion-header">
-                                        <button class="accordion-button  fw-bold bg-primary text-white" type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
-                                            aria-controls="panelsStayOpen-collapseThree">
+                                        <button class="accordion-button  fw-bold bg-primary text-white" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree"
+                                            aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
                                             Fabric Details
                                         </button>
                                     </h2>
@@ -167,7 +218,7 @@
 
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -209,4 +260,8 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>input {
+    border: none;
+    border-bottom: 1px solid;
+    border-radius: 0px;
+}</style>

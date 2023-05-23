@@ -26,12 +26,12 @@
                 </div>
                 <!-- <div class="d-flex align-items-center "> -->
                 <!-- <div class="w-100 text-center px-2">
-                        <p style="font-size: 12px;" class="w-100">{{ rackin.text1 }}</p>
-                    </div> -->
+                            <p style="font-size: 12px;" class="w-100">{{ rackin.text1 }}</p>
+                        </div> -->
                 <!-- <div class="" style="width: 60px;">
-                        <input v-model="message" class="form-control border-" type="text"
-                            style="border: none; border-bottom: 1px solid black;">
-                    </div> -->
+                            <input v-model="message" class="form-control border-" type="text"
+                                style="border: none; border-bottom: 1px solid black;">
+                        </div> -->
 
                 <!-- </div> -->
             </div>
@@ -94,14 +94,16 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                                <p v-for="(data, index) in previousData" :key="index">{{ form }}</p>
-                               <div class="d-flex flex-wrap">
-                                <p class="m-0 px-2"><span class="fw-bold">Godown:-</span>{{ form.godown }}</p>
-                                <p class="m-0 px-2"><span class="fw-bold">Rack:-</span>{{ form.rack }}</p>
-                                <p class="m-0 px-2"><span class="fw-bold">Qty:-</span>{{ form.qty }}</p>
-                                <p class="m-0 px-2"><span class="fw-bold">Selected:-</span>{{ form.select }}</p>
-                               </div>
+                                <div>
+                                    <p v-for="(data, index) in submittedData" :key="index">
+                                        <span class="fw-bold">Godown:</span> {{ data.godown }},
+                                        <span class="fw-bold">Rack:</span> {{ data.rack }},
+                                        <span class="fw-bold">Qty:</span> {{ data.qty }},
+                                        <span class="fw-bold">Selected:</span> {{ data.select }}
+                                    </p>
+                                </div>
                                 <button @click="submit">Submit</button>
+                                <!-- {{ submittedData[1]}} -->
                             </div>
                         </div>
                     </div>
@@ -121,6 +123,7 @@ import GrnLink from '../Navbar/GrnLink.vue';
 export default {
     components: { GrnLink },
     props: ['shipment'],
+    // 
     data() {
         return {
             publicPath: process.env.BASE_URL,
@@ -131,10 +134,12 @@ export default {
                 rack: '',
                 qty: '',
                 select: '',
-                previousData: []
-            }
+                previousData: [],
+            },
+            submittedData: [] // Add submittedData array
         }
     },
+
     computed: {
         grns() {
             return this.$store.getters['myshipment/getGrns']({
@@ -153,7 +158,8 @@ export default {
             this.active.grn = null
         },
         submit() {
-            this.form.id = this.active.grn.id
+            this.form.id = this.active.grn.id;
+            this.submittedData.push({ ...this.form }); // Push the submitted form data
             this.$store.dispatch('saveRacking', {
                 data: this.form
             }).then(() => {
@@ -163,9 +169,24 @@ export default {
                     rack: '',
                     qty: '',
                     select: '',
-                }
-            })
-        }
+                };
+            });
+        },
+
+        // submit() {
+        //     this.form.id = this.active.grn.id
+        //     this.$store.dispatch('saveRacking', {
+        //         data: this.form
+        //     }).then(() => {
+        //         this.form = {
+        //             id: '',
+        //             godown: '',
+        //             rack: '',
+        //             qty: '',
+        //             select: '',
+        //         }
+        //     })
+        // }
     },
 }
 </script>
@@ -176,6 +197,3 @@ export default {
     ;
 }
 </style>
-
-
-

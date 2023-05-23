@@ -48,6 +48,14 @@
                 </div>
                 <div class="offcanvas-body">
                     <div>
+                        <div class="d-flex justify-content-between">
+                            <button class="btn btn-danger">Status</button>
+                            <button class="btn btn-info">Action</button>
+                         </div>
+                         <div class="d-flex justify-content-between mt-2">
+                             <button class="btn btn-secondary">Resend Request</button>
+                             <button class="btn btn-warning">Dispatch</button>
+                         </div>
                         <div class="container">
                             <img :src="`${publicPath}${activeSupsample.img}`" alt="" class="w-100">
                         </div>

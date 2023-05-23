@@ -45,6 +45,14 @@ import GateKeeper from "../views/GateKeeper.vue"
 import ReceiptsPage from "../components/GateKeeper/ReceiptsPage.vue"
 import DeliveriesPage from "../components/GateKeeper/DeliveriesPage.vue"
 import StoreSearch from "../components/StoreDetail/StoreSearch.vue"
+import SalePurchasePage from "../components/Sales/SalePurchasePage.vue"
+import SaleSalesPage from "../components/Sales/SaleSalesPage.vue"
+import SupplierPurchase from "../components/SupplierDetail/SupplierPurchase.vue"
+import SupplierSale from "../components/SupplierDetail/SupplierSale.vue"
+import PurchaseP from "../components/Details/PurchaseP.vue"
+import PurchaseS from "../components/Details/PurchaseS.vue"
+import QcDetail from "../components/StoreKeeper/QcDetail.vue"
+import NewFabric from "../components/AddFabric/NewFabric.vue"
 
 
 const routes = [
@@ -219,6 +227,11 @@ const routes = [
     component: GrnDetail,
   },
   {
+    path: "/QcDetail/:shipmentId",
+    name: "QcDetail",
+    component: QcDetail,
+  },
+  {
     path: "/RackIn/:shipmentId",
     name: "RackIn",
     component: RackIn,
@@ -278,6 +291,41 @@ const routes = [
     path: "/StoreSearch",
     name: "StoreSearch",
     component: StoreSearch,
+  },
+  {
+    path: "/SalePurchasePage",
+    name: "SalePurchasePage",
+    component: SalePurchasePage,
+  },
+  {
+    path: "/SaleSalesPage",
+    name: "SaleSalesPage",
+    component: SaleSalesPage,
+  },
+  {
+    path: "/SupplierPurchase",
+    name: "SupplierPurchase",
+    component: SupplierPurchase,
+  },
+  {
+    path: "/SupplierSale",
+    name: "SupplierSale",
+    component: SupplierSale,
+  },
+  {
+    path: "/PurchaseP",
+    name: "PurchaseP",
+    component: PurchaseP,
+  },
+  {
+    path: "/PurchaseS",
+    name: "PurchaseS",
+    component: PurchaseS,
+  },
+  {
+    path: "/NewFabric",
+    name: "NewFabric",
+    component: NewFabric,
   },
   
 

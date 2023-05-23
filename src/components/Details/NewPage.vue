@@ -20,7 +20,6 @@
         <hr style="margin: 1px 0; opacity: 1;">
         <p class=" m-0 fs-4 text-center fw-bold border-bottom">Purchaser</p>
         <DetailNavLink active="New"></DetailNavLink>
-        <SearchBar></SearchBar>
         <ClothCard :design="dd" :chatss="chatss"></ClothCard>
     </div>
 </template>
@@ -29,11 +28,10 @@
 import BtnChange from '../Cards/BtnChange.vue';
 import ClothCard from '../Cards/ClothCard.vue';
 import DetailNavLink from '../Navbar/DetailNavLink.vue';
-import SearchBar from '../SearchBar/SearchBar.vue';
 
 export default {
     name: "NewPage",
-    components: { DetailNavLink, ClothCard, BtnChange, SearchBar },
+    components: { DetailNavLink, ClothCard, BtnChange },
     data() {
         return {
             publicPath: process.env.BASE_URL,

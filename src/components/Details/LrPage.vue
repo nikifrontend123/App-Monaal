@@ -17,7 +17,7 @@
             <p class=" m-0 fs-4 text-center fw-bold border-bottom">Purchaser</p>
             <DetailNavLink active="Lr"></DetailNavLink>
             <SearchBar></SearchBar>
-            <div v-for="(lr, index) in lrs" :key="index" class="d-flex container mt-2 border-bottom py-2"
+            <div v-for="(lr, index) in lrs" :key="index" class="d-flex mt-2 border-bottom py-2"
                 @click="showLr(lr)">
                 <!-- <RouterLink to="/LrDetailPage" style="text-decoration: none;"> -->
                 <div class="d-flex container">
@@ -25,11 +25,14 @@
                         <img :src="`${publicPath}${lr.img}`" class="border border2 border-dark"
                             style="width: 60px; height: 60px; border-radius: 50%;">
                     </div>
-                    <div class="ms-3 text-dark">
-                        <p class="m-0 fw-bold">{{ lr.name }}</p>
+                    <div class="ms-2 text-dark w-100">
+                        <div class="d-flex justify-content-between">
+                            <p class="m-0 fw-bold">{{ lr.name }}</p>
+                            <p class="m-0" style="font-size: 14px;">PO-{{ lr.po }}</p>
+                        </div>
                         <div class="d-flex text-dark">
-                            <p class="m-0 fw-bold">Ariving : <span class="fw-light">{{ lr.ariving }}</span></p>
-                            <p class="m-0 ms-3 fw-bold">CID : <span class="fw-light">{{ lr.cid }}</span></p>
+                            <p class="m-0">Qty:{{ lr.qty }}</p>
+                            <p class="m-0 ms-1">| Amt:{{ lr.amt }}</p>
                         </div>
                     </div>
                 </div>
@@ -51,14 +54,17 @@
                             <div class="container">
                                 <img :src="`${publicPath}${activeLr.img}`" alt="" class="w-100">
                             </div>
-                            <div class="text-center">
+                            <div class="">
                                 <p>{{ activeLr.name }}</p>
                                 <p>{{ activeLr.tag }}</p>
+                            </div>
+                            <div class=" d-flex justify-content-center my-2 ">
+                                <button class="btn btn-warning">Add to Favourite</button>
                             </div>
                             <div class="accordion" id="accordionPanelsStayOpenExample">
                                 <div class="accordion-item">
                                     <h2 class="accordion-header">
-                                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        <button class="accordion-button  fw-bold" type="button" data-bs-toggle="collapse"
                                             data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
                                             aria-controls="panelsStayOpen-collapseOne">
                                             Tracking Detail
@@ -72,7 +78,7 @@
                                 </div>
                                 <div class="accordion-item">
                                     <h2 class="accordion-header">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        <button class="accordion-button  fw-bold" type="button" data-bs-toggle="collapse"
                                             data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
                                             aria-controls="panelsStayOpen-collapseTwo">
                                             Dispatch Details
@@ -89,7 +95,7 @@
                                 </div>
                                 <div class="accordion-item">
                                     <h2 class="accordion-header">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        <button class="accordion-button  fw-bold" type="button" data-bs-toggle="collapse"
                                             data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
                                             aria-controls="panelsStayOpen-collapseThree">
                                             Fabric Details

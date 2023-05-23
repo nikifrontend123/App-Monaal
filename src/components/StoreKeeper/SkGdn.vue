@@ -1,10 +1,10 @@
 <template>
     <div>
-        <div class="d-flex justify-content-between px-2">
+        <div class="d-flex border-bottom justify-content-between px-2">
             <RouterLink to="/StoreKeeper">
                 <i class="bi bi-arrow-left-short fs-4"></i>
             </RouterLink>
-        <h4 class="text-center border-bottom fw-bold py-2">Store Keeper</h4>
+        <h4 class="text-center fw-bold py-2">Store Keeper</h4>
         <div class=""></div>
         </div>
         <StoreKeeperLink active="SkGdn"></StoreKeeperLink>

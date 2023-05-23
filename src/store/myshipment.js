@@ -14,6 +14,8 @@ export default {
                         id: 1,
                         img: "img/icons/f1.jpg",
                         name: 'Cheese fabric',
+                        po:'15000',
+                        qc:'10000',
                         qty: {
                             roll: {
                                     actual: '80',
@@ -38,6 +40,8 @@ export default {
                         id: 2,
                         img: "img/icons/f1.jpg",
                         name: 'Cheese fabric',
+                        po:'15000',
+                        qc:'10000',
                         qty: {
                             roll: {
                                     actual: '90',

@@ -1,10 +1,10 @@
 <template>
     <div>
-        <div class="d-flex justify-content-between px-2">
+        <div class="d-flex justify-content-between border-bottom px-2">
             <RouterLink to="/SkGdn">
                 <i class="bi bi-arrow-left-short fs-4"></i>
             </RouterLink>
-            <h4 class="text-center border-bottom py-2">Outward</h4>
+            <h4 class="text-center py-2">Outward</h4>
             <div class=""></div>
         </div>
         <GdnLink active="RackOut"></GdnLink>
@@ -30,7 +30,7 @@
             </div>
         </div>
 
-        <div v-if="active.rackout" class="modal show fade d-block" tabindex="-1">
+        <div v-if="active.rackout" class="modal show fade d-block container" tabindex="-1">
             <div class="modal-dialog  modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">

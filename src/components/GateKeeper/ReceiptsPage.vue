@@ -5,7 +5,7 @@
                 <i class="bi bi-arrow-left-short fs-4"></i>
             </RouterLink>
             <h4 class="text-center py-2">Gate Keeper</h4>
-            <div class=""></div>
+            <div class=""></div> 
         </div>
         <GateKeeperLinks active="ReceiptsPage"></GateKeeperLinks>
         <div v-for="(receipt, index) in receipts" :key="index" class="container border-bottom">
